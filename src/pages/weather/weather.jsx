@@ -5,17 +5,18 @@ function Weather() {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
 
-  const apiKey = 'YOUR_API_KEY_HERE';
+  const apiKey = 'f10acad834a5f90d33c1a40d20e88a86';
 
   const fetchWeather = async () => {
     try {
-      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
       setWeatherData(response.data);
     } catch (error) {
       console.error('Error fetching weather data:', error);
+      alert('Failed to fetch weather data. Please try again later.');
     }
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     fetchWeather();
