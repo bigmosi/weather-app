@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThermometerHalf, faTint, faWind } from '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
-function Weather() {
+const Weather = () => {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
 
@@ -9,7 +12,7 @@ function Weather() {
 
   const fetchWeather = async () => {
     try {
-      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
+      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
       setWeatherData(response.data);
     } catch (error) {
       console.error('Error fetching weather data:', error);
@@ -39,9 +42,21 @@ function Weather() {
       {weatherData && (
         <div className="mt-3">
           <h2>{weatherData.name}</h2>
-          <p>{weatherData.weather[0].main}: {weatherData.weather[0].description}</p>
-          <p>Temperature: {weatherData.main.temp}°C</p>
-          <p>Humidity: {weatherData.main.humidity}%</p>
+          <p>
+            <FontAwesomeIcon icon={faThermometerHalf} />
+            {' '}
+            Temperature: {weatherData.main.temp}°C
+          </p>
+          <p>
+            <FontAwesomeIcon icon={faTint} />
+            {' '}
+            Humidity: {weatherData.main.humidity}%
+          </p>
+          <p>
+            <FontAwesomeIcon icon={faWind} />
+            {' '}
+            Wind Speed: {weatherData.wind.speed} m/s
+          </p>
         </div>
       )}
     </div>
