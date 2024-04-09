@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import WeatherForm from '../../components/WeatherForm';
+import WeatherForm from '../../components/weatherForm/__tests__/WeatherForm';
 import ErrorMessage from '../../components/ErrorMessage';
 import WeatherInfo from '../../components/WeatherInfo';
 

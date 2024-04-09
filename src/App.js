@@ -8,6 +8,7 @@ import {
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import {
   HomeOutlined,
+  LogoutOutlined,
 } from '@ant-design/icons';
 
 import Weather from './pages/weather/weather';
@@ -67,6 +68,9 @@ function App() {
             >
               <Menu.Item key="/" icon={<HomeOutlined />}>
                 Dashboard
+              </Menu.Item>
+              <Menu.Item key="/logout" icon={<LogoutOutlined />}>
+                Logout
               </Menu.Item>
             </Menu>
           </Sider>
