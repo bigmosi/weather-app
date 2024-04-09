@@ -1,9 +1,9 @@
-/* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThermometerHalf, faTint, faWind } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import WeatherForm from '../../components/WeatherForm';
+import ErrorMessage from '../../components/ErrorMessage';
+import WeatherInfo from '../../components/WeatherInfo';
 
 const Weather = () => {
   const [city, setCity] = useState('');
@@ -35,49 +35,9 @@ const Weather = () => {
 
   return (
     <div className="container">
-      <form onSubmit={handleSubmit} className="mt-3">
-        <div className="mb-3">
-          <input
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            className="form-control"
-            placeholder="Enter city name"
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">Get Weather</button>
-      </form>
-      {error && (
-      <div className="alert alert-danger" role="alert" style={{ marginTop: '5px' }}>
-        Please Enter the correct name of the city!
-      </div>
-      )}
-      {weatherData && (
-        <div className="mt-3 weather-info">
-          <h2>{weatherData.name}</h2>
-          <p className="weather-info-item">
-            <FontAwesomeIcon icon={faThermometerHalf} />
-            {' '}
-            Temperature:
-            {weatherData.main.temp}
-            °C
-          </p>
-          <p className="weather-info-item">
-            <FontAwesomeIcon icon={faTint} />
-            {' '}
-            Humidity:
-            {weatherData.main.humidity}
-            %
-          </p>
-          <p className="weather-info-item">
-            <FontAwesomeIcon icon={faWind} />
-            {' '}
-            Wind Speed:
-            {weatherData.wind.speed}
-            m/s
-          </p>
-        </div>
-      )}
+      <WeatherForm city={city} setCity={setCity} handleSubmit={handleSubmit} />
+      {error && <ErrorMessage message={error} />}
+      {weatherData && <WeatherInfo weatherData={weatherData} />}
     </div>
   );
 };
