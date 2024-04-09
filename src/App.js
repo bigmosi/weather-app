@@ -9,7 +9,6 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import {
   HomeOutlined,
 } from '@ant-design/icons';
-import styles from './App.module.css';
 
 import Weather from './pages/weather/weather';
 

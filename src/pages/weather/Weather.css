@@ -1,0 +1,13 @@
+.weather-info {
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .weather-info-item {
+    opacity: 0;
+  }
+  
+  .weather-info-item.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
